@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+
+  <title>Frontend Mentor | Weather app</title>
+
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+
+</head>
+
+<body>
+ 
+  <header class="header wrapper">
+  <div class="header__content">
+
+    <a class="header__homelink" href="/">
+      <img class="header__logo" src="/assets/images/logo.svg" alt="">
+    </a>
+
+    <select class="dropdown header__dropdown" name="units" id="ddlUnits">
+  <option value="">Units</option>
+  <option value="C">°C</option>
+  <option value="F">°F</option>
+</select>
+    </div>
+
+  </div>
+</header>
+<div class="tools">
+
+  <button id="btnFavorite" class="fav-btn">⭐ Add to Favorites</button>
+
+  <select id="ddlFavorites" class="fav-select">
+    <option value="">My Favorites</option>
+  </select>
+
+  <div id="weatherAssistant" class="assistant">
+    🤖 Weather Assistant: --
+  </div>
+
+</div>
+
+  <main id="main" class="main wrapper">
+
+    <section class="hero">
+      <div class="hero__content">
+            <h1 class="hero__title">How's the sky looking today?</h1>
+
+            <div class="hero__search">
+              <input class="hero__textbox" type="text" name="search" id="txtSearch" placeholder="Search for a place...">
+              <button id="btnSearch" class="hero__button" type="submit">Search</button>
+            </div>
+      </div>
+
+    </section>
+
+    <div class="dashboard">
+      <section class="current">
+        <h2 class="visually-hidden">Current Location Temperature</h2>
+
+        <div class="current__weather">
+          <div class="current__location">
+            <div id="dvCityCountry" class="current__city">Berlin, Germany</div>
+            <div id="dvCurrDate" class="current__date">Tuesday, Aug 5, 2025</div>
+          </div>
+          <div class="current__info">
+            <img class="current__icon" src="/assets/images/icon-sunny.webp" alt="" width="320" height="320">
+            <div class="current__temp"><span id="dvCurrTemp">20</span>&deg;</div>
+          </div>
+        </div>
+
+        <div class="current__conditions">
+          <div class="block current__condition">
+            <p class="current__condition-title">Feels Like</p>
+            <p class="current__condition-value"><span id="pFeelsLike"></span>&deg;</p>
+          </div>
+          <div class="block current__condition">
+            <p class="current__condition-title">Humidity</p>
+            <p class="current__condition-value"><span id="pHumidity"></span>%</p>
+          </div>
+          <div class="block current__condition">
+            <p class="current__condition-title">Wind</p>
+            <p id="pWind" class="current__condition-value"></p>
+          </div>
+          <div class="block current__condition">
+            <p class="current__condition-title">Precipitation</p>
+            <p id="pPrecipitation" class="current__condition-value"></p>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="daily">
+        <h2 class="section__title daily__title">Daily forecast</h2>
+        <div class="daily__forecast">
+          <div id="dvForecastDay1" class="block daily__day"></div>
+          <div id="dvForecastDay2" class="block daily__day"></div>
+          <div id="dvForecastDay3" class="block daily__day"></div>
+          <div id="dvForecastDay4" class="block daily__day"></div>
+          <div id="dvForecastDay5" class="block daily__day"></div>
+          <div id="dvForecastDay6" class="block daily__day"></div>
+          <div id="dvForecastDay7" class="block daily__day"></div>
+        </div>
+      </section>
+
+
+    </div>
+
+
+  </main>
+
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,419 @@
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    min-height:100vh;
+    color:#f5f1e6;
+    overflow-x:hidden;
+    position:relative;
+
+    background:
+    radial-gradient(circle at top left,#2f3a26 0%,transparent 45%),
+    radial-gradient(circle at bottom right,#b9ad8d 0%,transparent 50%),
+    linear-gradient(135deg,#070a06,#11160f,#171e15,#050603);
+}
+
+/* ================= STARS ================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1.5px, transparent 1.5px);
+
+    background-size:120px 120px,180px 180px,250px 250px;
+    animation:starsMove 60s linear infinite;
+    opacity:.3;
+}
+
+@keyframes starsMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(-900px);}
+}
+
+/* ================= WRAPPER ================= */
+
+.wrapper{
+    width:min(1100px,92%);
+    margin:auto;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:35px 0 20px;
+    text-align:center;
+}
+
+.hero__title{
+    font-size:2.4rem;
+    font-weight:700;
+    color:#d7c9a3;
+    margin-bottom:18px;
+}
+
+/* ================= SEARCH ================= */
+
+.hero__search{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.hero__textbox{
+    padding:12px 16px;
+    border-radius:12px;
+    border:1px solid rgba(215,201,163,.25);
+    background:rgba(255,255,255,.06);
+    color:#fff;
+}
+
+.hero__button{
+    padding:12px 18px;
+    border-radius:12px;
+    border:none;
+    cursor:pointer;
+    background:#6f7a52;
+    color:#fff;
+}
+/* ================= UNITS TOGGLE (RIGHT SIDE FIXED) ================= */
+/* ================= UNITS SELECT (FANCY VERSION) ================= */
+
+.header__dropdown{
+    position:relative;
+
+    padding:10px 16px;
+    border-radius:999px;
+
+    border:1px solid rgba(215,201,163,.3);
+    background:rgba(255,255,255,.06);
+
+    color:#d7c9a3;
+    font-weight:600;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(12px);
+
+    outline:none;
+
+    transition:.3s;
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    text-align:center;
+}
+
+/* لما يوقف عليه */
+.header__dropdown:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(215,201,163,.25);
+}
+
+/* لما يتركّز */
+.header__dropdown:focus{
+    border-color:#d7c9a3;
+    box-shadow:0 0 22px rgba(215,201,163,.35);
+}
+
+/* سهم مخصص */
+.header__dropdown{
+    background-image:
+    linear-gradient(45deg,transparent 50%,#d7c9a3 50%),
+    linear-gradient(135deg,#d7c9a3 50%,transparent 50%);
+
+    background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+
+    background-size:6px 6px,6px 6px;
+    background-repeat:no-repeat;
+
+    padding-right:34px;
+}
+
+.header__content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.units-btn{
+    position:fixed;
+    top:20px;
+    right:20px;
+
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    padding:8px 14px;
+    border-radius:999px;
+
+    border:1px solid rgba(215,201,163,.25);
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(12px);
+
+    color:#d7c9a3;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:.3s;
+
+    z-index:999;
+}
+
+.units-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(215,201,163,.25);
+}
+
+/* active state (اختياري إذا عندك JS للتبديل) */
+.units-btn.active{
+    background:#6f7a52;
+    color:#fff;
+    box-shadow:0 0 25px rgba(111,122,82,.5);
+}
+
+
+
+/* ================= MAIN CARD ================= */
+
+.current__weather{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(215,201,163,.15);
+    border-radius:26px;
+    padding:26px;
+    backdrop-filter:blur(18px);
+}
+
+/* ================= CITY ================= */
+
+.current__city{
+    font-size:2rem;
+    font-weight:700;
+}
+
+.current__date{
+    font-size:1rem;
+    color:#cbbf9f;
+}
+
+/* ================= WEATHER TOP ================= */
+
+.weather__top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px 0;
+}
+
+/* TEMP BIGGER */
+
+.current__temp{
+    font-size:4rem;
+    font-weight:700;
+}
+
+/* ICONS BALANCED */
+
+.current__icon{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+
+    animation:float 3.5s ease-in-out infinite;
+}
+
+/* ================= ICON ANIMATIONS ================= */
+
+.sun{
+    animation:spin 18s linear infinite, float 3s ease-in-out infinite;
+}
+
+.cloud{
+    animation:cloudMove 6s ease-in-out infinite;
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+@keyframes cloudMove{
+    0%,100%{transform:translateX(0);}
+    50%{transform:translateX(10px);}
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+}
+
+/* ================= CONDITIONS (BIGGER + CLEAR) ================= */
+
+.current__conditions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin-top:20px;
+}
+
+.current__condition{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(215,201,163,.18);
+    border-radius:18px;
+    padding:18px;
+    text-align:center;
+    transition:.3s;
+}
+
+.current__condition:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 22px rgba(215,201,163,.25);
+}
+
+.current__condition i{
+    font-size:1.5rem;
+    color:#cbbf9f;
+    margin-bottom:8px;
+    display:block;
+}
+
+.current__condition-title{
+    font-size:.9rem;
+}
+
+.current__condition-value{
+    font-size:1.3rem;
+    font-weight:700;
+}
+
+/* ================= DAILY FORECAST (BIGGER CARDS) ================= */
+
+.daily__title{
+    margin:22px 0 12px;
+    font-size:1.4rem;
+    color:#d7c9a3;
+}
+
+.daily__forecast{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:12px;
+}
+
+.daily__day{
+    background:rgba(255,255,255,.04);
+    border-radius:16px;
+    padding:14px;
+    text-align:center;
+    border:1px solid rgba(215,201,163,.15);
+    transition:.3s;
+}
+
+.daily__day:hover{
+    transform:translateY(-5px);
+}
+
+.daily__day-icon{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+}
+
+.daily__day-title{
+    font-size:.95rem;
+    margin:5px 0;
+}
+
+.daily__day-high{
+    font-size:1rem;
+    font-weight:700;
+}
+
+.daily__day-low{
+    font-size:.85rem;
+    color:#cbbf9f;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+    .units-btn{
+        position:static;
+        display:block;
+        margin:10px auto;
+    }
+
+    .current__conditions{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .daily__forecast{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .weather__top{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+}
+/* ================= TOOLS ================= */
+
+.tools{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    align-items:center;
+    margin:15px 0;
+    flex-wrap:wrap;
+}
+
+.fav-btn{
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid rgba(215,201,163,.3);
+    background:rgba(255,255,255,.06);
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.fav-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 15px rgba(215,201,163,.3);
+}
+
+.fav-select{
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid rgba(215,201,163,.3);
+    background:rgba(255,255,255,.06);
+    color:#fff;
+}
+
+/* Assistant box */
+.assistant{
+    padding:10px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(215,201,163,.2);
+    color:#d7c9a3;
+}
